@@ -3,7 +3,7 @@
 # Sparky APTus Upgrade is a simply tool for upgrading the system
 # Created by Paweł "pavroo" Pijanowski 2014/10/31
 # Copyright 2014-2021 under the GNU GPL2 License
-# Last update 2021/07/29
+# Last update 2021/11/16
 
 # It runs full system upgrade in a text console
 
@@ -28,5 +28,6 @@ else
 fi
 
 sudo apt update && sudo apt full-upgrade --no-install-recommends
+sudo dpkg --configure -a
 
 exit 0
