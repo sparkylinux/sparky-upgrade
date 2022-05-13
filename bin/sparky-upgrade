@@ -2,32 +2,46 @@
 
 # Sparky APTus Upgrade is a simply tool for upgrading the system
 # Created by Paweł "pavroo" Pijanowski 2014/10/31
-# Copyright 2014-2021 under the GNU GPL2 License
-# Last update 2021/11/16
+# Copyright 2014-2022 under the GNU GPL2 License
+# Last update 2022/05/13
 
 # It runs full system upgrade in a text console
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NOC0='\033[0m'
 
 # check out connection to debian server
 PINGTEST0=$(sudo ping -c 1 debian.org | grep [0-9])
 if [ "$PINGTEST0" = "" ]; then
-	echo "Debian server is not reachable, exiting..."
+	printf "$RED Debian server is not reachable, exiting... $NOCO"
+	echo ""
 	exit 1
 else
-	echo "Debian server is on, proceed..."
+	printf "$GREEN Debian server is on, proceed... $NOCO"
+	echo ""
 	sleep 1
 fi
 
 # check out connection to sparky server
 PINGTEST1=$(sudo ping -c 1 sparkylinux.org | grep [0-9])
 if [ "$PINGTEST1" = "" ]; then
-	echo "Sparky server is not reachable, exiting..."
+	printf "$RED Sparky server is not reachable, exiting... $NOCO"
+	echo ""
 	exit 1
 else
-	echo "Sparky server is on, proceed..."
+	printf "$GREEN Sparky server is on, proceed... $NOCO"
+	echo ""
 	sleep 1
 fi
 
-sudo apt update && sudo apt full-upgrade --no-install-recommends
-sudo dpkg --configure -a
+CHECKNALA=`which nala`
+if [ "$CHECKNALA" != "" ]; then
+	sudo nala upgrade --no-install-recommends --no-autoremove
+	sudo dpkg --configure -a
+else
+	sudo apt update && sudo apt full-upgrade --no-install-recommends
+	sudo dpkg --configure -a
+fi
 
 exit 0

@@ -1,7 +1,7 @@
 Sparky Upgrade
 Sparky Upgrade lets you upgrade the system via one command.
 
-Copyright (C) 2021 Paweł Pijanowski
+Copyright (C) 2021-2022 Paweł Pijanowski
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,6 +23,10 @@ grep
 iputils-ping
 mount
 sudo
+
+Suggests:
+--------------
+nala | nala-legacy
 
 Conflicts:
 --------------
