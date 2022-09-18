@@ -3,9 +3,18 @@
 # Sparky APTus Upgrade is a simply tool for upgrading the system
 # Created by Paweł "pavroo" Pijanowski 2014/10/31
 # Copyright 2014-2022 under the GNU GPL2 License
-# Last update 2022/05/13
+# Last update 2022/09/18
 
 # It runs full system upgrade in a text console
+
+if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+	echo ""
+	echo "Sparky Upgrade runs full Sparky system upgrade in a text console"
+	echo "It uses Nala (if installed) or APT to do the job"
+	echo "It can be also used as a short command: spu"
+	echo ""
+	exit 0
+fi
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'

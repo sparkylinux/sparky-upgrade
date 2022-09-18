@@ -16,6 +16,7 @@
 
 if [ "$1" = "uninstall" ]; then
 	rm -f /usr/bin/sparky-upgrade
+	rm -f /usr/bin/spu
 else
 	cp bin/* /usr/bin/
 fi
