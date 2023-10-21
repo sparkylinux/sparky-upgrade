@@ -2,8 +2,8 @@
 
 # Sparky APTus Upgrade is a simply tool for upgrading the system
 # Created by Paweł "pavroo" Pijanowski 2014/10/31
-# Copyright 2014-2022 under the GNU GPL2 License
-# Last update 2022/09/18
+# Copyright 2014-2023 under the GNU GPL2 License
+# Last update 2023/10/21
 
 # It runs full system upgrade in a text console
 
@@ -46,11 +46,11 @@ fi
 
 CHECKNALA=`which nala`
 if [ "$CHECKNALA" != "" ]; then
-	sudo nala upgrade --no-install-recommends --no-autoremove
-	sudo dpkg --configure -a
+	sudo nala upgrade --full --no-install-recommends --no-autoremove && sudo dpkg --configure -a
+	# sudo dpkg --configure -a
 else
-	sudo apt update && sudo apt full-upgrade --no-install-recommends
-	sudo dpkg --configure -a
+	sudo apt update && sudo apt full-upgrade --no-install-recommends && sudo dpkg --configure -a
+	# sudo dpkg --configure -a
 fi
 
 exit 0
